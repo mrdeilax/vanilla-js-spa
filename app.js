@@ -17,8 +17,23 @@ const routes = {
           window.location.origin + pathname
       )
       rootDiv.innerHTML = routes[pathname]
+      
+      if(pathname === '/'){
+        console.log('homepage');
+        
+      }else if(pathname === '/register'){
+        console.log('register');
+        
+      }
+      
   }
 
   window.onpopstate = () => {
     rootDiv.innerHTML = routes[window.location.pathname]
   }
+
+
+//====CRUD====
+
+
+
