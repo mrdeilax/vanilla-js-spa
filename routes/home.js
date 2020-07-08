@@ -1,5 +1,5 @@
 const home = `
-<table>
+<table class="formTable" id="formTable">
     <tr>
     <th>First name</th>
     <th>Last name</th>
@@ -13,3 +13,4 @@ const home = `
  </tbody>
 </table>
 `;
+
