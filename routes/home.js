@@ -9,9 +9,8 @@ const home = `
     <th>Adress</th>
     <th></th>
     </tr>
-    
     <tbody id="userInfo">
- </tbody>
+    </tbody>
 </table>
 `;
 
