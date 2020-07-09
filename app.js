@@ -35,9 +35,18 @@ const routes = {
 let selectedRow = null;
 
 function onFormSubmit() {
-      var formData = readFormData();
+  if(validateUnique()){
+    var formData = readFormData();
+    if(selectedRow === null){
       const id = Math.random().toString(36).substr(2, 9);
-      localStorage.setItem(id, JSON.stringify(formData))
+      localStorage.setItem(id, JSON.stringify(formData));
+      onNavigate('/');
+    }else{
+      updateFormData();
+    }
+  }
+  
+      
 }
 
 function readFormData(){
@@ -49,12 +58,6 @@ function readFormData(){
   formData['email'] = document.getElementById('email').value;
   formData['adress'] = document.getElementById('adress').value;
   return formData
-}
-
-function insertNewRecord(formData){
-  let table = document.getElementById("formTable");
-  console.log(table);
-  
 }
 
 function renderFormData(){
@@ -89,10 +92,81 @@ function renderFormData(){
       cell6.innerHTML = item.adress;
       //insert buttons
       cell7 = row.insertCell(6);
-      cell7.innerHTML = `<a onClick="onEdit(this)">Edit</a>
+      cell7.innerHTML = `<a onClick="onNavigate('/register');onEdit(this);">Edit</a>
                          <a onClick="onDelete(this)">Delete</a>`;
+      //inserts the id of element
+      cell8 = row.insertCell(7);
+      cell8.hidden = true;
+      cell8.innerHTML = id;
 
   }
+}
+
+function onEdit(item){
+  //select the whole entry
+  selectedRow = item.parentElement.parentElement;
+  document.getElementById("fname").value = selectedRow.cells[0].innerHTML;
+  document.getElementById("lname").value = selectedRow.cells[1].innerHTML;
+  document.getElementById("date").value = selectedRow.cells[2].innerHTML;
+  document.getElementById("phone").value = selectedRow.cells[3].innerHTML;
+  document.getElementById("email").value = selectedRow.cells[4].innerHTML;
+  document.getElementById("adress").value = selectedRow.cells[5].innerHTML;
+}
+
+function updateFormData(){
+    //get selected item id and convert to js object
+    const id = selectedRow.lastChild.innerHTML;
+    const item = JSON.parse(window.localStorage.getItem(id));
+
+    //edit ogject information based on input value
+    item.fname = document.getElementById("fname").value;
+    item.lname = document.getElementById("lname").value;
+    item.date = document.getElementById("date").value;
+    item.phone = document.getElementById("phone").value;
+    item.email = document.getElementById("email").value;
+    item.adress = document.getElementById("adress").value;
+    
+    
+    //save new item
+    localStorage.setItem(id, JSON.stringify(item));
+    onNavigate('/');
+}
+
+function onDelete(item){
+  selectedRow = item.parentElement.parentElement;
+  const id = selectedRow.lastChild.innerHTML;
+  localStorage.removeItem(id)
+  onNavigate('/');
+}
+
+function validateUnique(){
+  isValid = true;
+
+  for(let i=0; i<localStorage.length;i++){
+    let id = localStorage.key(i);
+    let item = JSON.parse(window.localStorage.getItem(id));
+    //validate if phone number exists
+    if(document.getElementById('phone').value === item.phone){
+      document.getElementById('phoneValidation').classList.remove('hide');
+      isValid=false;
+    }else{
+      if (!document.getElementById("phoneValidation").classList.contains("hide"))
+          document.getElementById("phoneValidation").classList.add("hide");
+    //validate if email exists    
+    if(document.getElementById('email').value === item.email){
+      document.getElementById('emailValidation').classList.remove('hide');
+      isValid=false;
+    }else{
+      if (!document.getElementById("emailValidation").classList.contains("hide"))
+      document.getElementById("emailValidation").classList.add("hide");
+      isValid=true;
+      }
+    }
+          
+      
+    
+  }
+  return isValid;
 }
 
 renderFormData();

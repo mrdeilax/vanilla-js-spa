@@ -1,9 +1,16 @@
-ul{
-    display: flex;
-    justify-content: space-evenly;
-    list-style: none;
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: #f9fafb;
+    font-family: 'Open Sans', sans-serif;
+  }
+
+.hide{
+    display:none;
 }
 
-a{
-    text-decoration: none;
+.navbar{
+    background-color: #f4f4f4;
 }
