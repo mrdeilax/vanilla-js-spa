@@ -1,16 +1,131 @@
+:root{
+    --grey-color:#DCDCDC;
+    --warn-color:#cc3300;
+    --primary-color:#8e7c93;
+    --secondary-color:#485665;
+    --edit-color:#429bb8;
+    --white-color:#fff;
+  }
+
 *{
     margin: 0;
     padding: 0;
 }
 body{
-    background-color: #f9fafb;
+    background-color: #fff;
     font-family: 'Open Sans', sans-serif;
   }
 
 .hide{
     display:none;
 }
-
+/* NAVBAR */
 .navbar{
-    background-color: #f4f4f4;
+    background-color: var(--secondary-color);
+    display: flex;
+    justify-content:space-evenly;
+    list-style: none;
+    padding: 1rem;
+}
+
+.nav-item{
+    text-decoration: none;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    color: var(--white-color);
+}
+
+.nav-item:hover{
+    text-decoration: underline;
+}
+
+.nav-item-active{
+    text-decoration: underline;
+}
+
+/* TABLE */
+
+.formTable{
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -30%);
+    text-align: left;
+    width: 80%;
+}
+
+.formTable th{
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    padding: .5rem;
+}
+.formTable td{
+    padding: 1rem;
+}
+
+.btn{
+    border: 1px solid;
+    border-radius: .25rem;
+    font-size: 1rem;
+    padding: .5rem;
+}
+
+.btn-edit{
+    background-color: var(--edit-color);
+    color: var(--white-color);
+}
+.btn-edit:hover{
+    background-color: var(--white-color);
+    color: var(--edit-color);
+    cursor: pointer;
+}
+
+.btn-delete{
+    background-color: var(--warn-color);
+    color: var(--white-color);
+}
+
+.btn-delete:hover{
+    background-color:var(--white-color);
+    color:  var(--warn-color);
+    cursor: pointer;
+}
+
+/* FORM */
+.form{
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -30%);
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    width: 25rem;
+    padding: 1.7rem 2rem;
+}
+ .row{
+     margin: 1rem;
+ }
+
+.form input{
+    position: absolute;
+    right: 10%;
+}
+
+.align-right{
+    margin-left: 3rem;
+}
+
+.btn-submit{
+    position: absolute;
+    bottom: .25rem;
+    margin: .25rem;
+    padding: .25rem;
+    background-color: var(--white-color);
+    border: 1px solid;
+    border-radius: .25rem;
+}
+
+.btn-submit:hover{
+    background-color: var(--grey-color);
 }

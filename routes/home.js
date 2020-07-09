@@ -7,6 +7,7 @@ const home = `
     <th>Phone number</th>
     <th>E-mail</th>
     <th>Adress</th>
+    <th></th>
     </tr>
     
     <tbody id="userInfo">

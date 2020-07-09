@@ -8,13 +8,13 @@
     <script src="./routes/home.js"></script>
 </head>
 <body>
-    <nav class="navbar">
-        <ul>
+    <nav>
+        <ul class="navbar">
             <li>
-                <a href="#" onclick="onNavigate('/'); return false;">home</a>
+                <a id="homeBtn" class="nav-item nav-item-active" href="#" onclick="onNavigate('/'); return false;">home</a>
             </li>
             <li>
-                <a href="#" onclick="onNavigate('/register'); return false;">register</a>
+                <a id="registerBtn" class="nav-item" href="#" onclick="onNavigate('/register'); return false;">register</a>
             </li>
         </ul>
     </nav>
